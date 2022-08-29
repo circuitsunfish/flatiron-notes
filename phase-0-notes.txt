@@ -9,6 +9,12 @@ Setting up the Environment
 
 then i removed this entire directory and cloned from git into the parent directory. this worked. do not initialize assignments with `git pull`
 
+Installing Ruby on a Mac
+I had a permissions issue regarding attempting to update the system version of Ruby. More about this issue is available at this post:
+https://www.rubyonmac.dev/you-dont-have-write-permissions-for-the-library-ruby-gems-2-6-0-directory/
+
+The sequence that worked was available here: https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/#start-here-if-you-choose-the-long-and-manual-route
+
 programming as a conversation part 1
 
 Definitions:
