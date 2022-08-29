@@ -1,0 +1,383 @@
+note:
+
+pre-work
+
+phase 0
+
+Setting up the Environment
+ in order to clone this repository it was necessary to `git init` in the intended directory then `git pull` the intended repository.
+
+then i removed this entire directory and cloned from git into the parent directory. this worked. do not initialize assignments with `git pull`
+
+programming as a conversation part 1
+
+Definitions:
+
+Notation: Specialized vocabulary or system of symbols for communication
+Programming: act of creating programs/documents in a notation system that can be understood by humans and computers
+Programming language: Defined notation for asking a computer to do work
+
+Expression: unit of ideas that have meaning
+	a combination of information (data) and symbols (operators)
+Evaluation: identifying meaning in an expression
+	interpreting an expression, according to rules, to produce a return value
+Return Value: response to an expression once it has been evaluated
+Variable: A named unit of data
+Data Type: Category of data that defines which operators and rules are available to that data
+Boolean: True/False expression
+Comparison expressions: greater than, less than, equal to. in varying levels of strictness
+
+Key Concept:
+
+The Essential Three Expressions:
+	Constant Expression
+		A constant expression is a valid response as a return value. When performing arithmetic, the goal is to work down all the operators until there is no further work. '3*(10-4)' is not a valid return value, because first '10-4' needs to be evaluated, and then '3*6'. the resultant '18' is simply data with no operators, making it a constant expression.
+
+	Assignment Expression
+		An assignment expression binds a variable name to its corresponding variable value. In JavaScript, the convention is to use camelCase for variable names. Return values of an assignment expression is the value assigned to the variable name.
+
+	Variable lookup expression
+		A variable lookup expression returns the variable value associated with a variable name. Return values of a variable lookup expression is the value assigned to the variable name.	
+
+Variable assignment operators:
+
+	Back in my day. we used `var` and that's how we likesed it.
+
+	"As your JavaScript powers increase with experience, you'll develop a more nuanced understanding of what to use where. However, for now, this is a good rule of thumb:
+
+	Use `var`... never.
+	Use `let`... when you know the value of a variable will change. For example, a counter variable that starts at 0 and is subsequently incremented to 1, 2, 3, and so on. In the lessons on looping and iteration in JavaScript, let will have its moment in the spotlight.
+	Use `const`... for every other variable."
+
+Seven Data Types in JavaScript:
+
+  Primitive types represent a single value or data unit
+	Number
+	String
+	Array
+	null (intentionally absent object, internally labelled as an object)
+	undefined (a variable name with no value - contextually *not yet defined*)
+	Symbols (new as of E6 and used to define object properties)
+  Advanced data type:
+	Object
+		A collection of data. Objects contain a list of properties in key-value pairings.
+
+Data type interactions
+	Stricter programming languages will expect the programmer to define how mixed-type expressions are handled. Loosely typed languages like JavaScript will return something, even and especially if a mixed-type expression will result in a confusingly-typed return value. Good habits are not to depend on JavaScript's sometimes reasonable mixed-type handling and use interpolation ( as in `The value of variable is ${variable}` ) or the tostring() method; so that when returning to work with strongly-typed syntax the habit is already there.
+
+Describe the Difference Between Truthy and Falsey Values
+	All values in Javascript, of any data type (String, Number, etc.), are treated as either truthy or falsey. The following values are falsey:
+
+	false
+	null
+	undefined
+	0
+	NaN
+	An empty string ("", '')
+	Every other value is truthy.
+
+	To check whether a value is truthy or falsey, we can pass it to the global Boolean object, which converts the value into its boolean equivalent.
+
+JavaScript includes four equality operators:
+
+	strict equality operator (===)
+	strict inequality operator (!==)
+	loose equality operator (==)
+	loose inequality operator (!=)
+	These operators allow us to compare values and determine whether they are the same.
+
+	Strict Equality Operator === and Strict Inequality Operator !==
+		The strict equality operator returns true if two values are equal without performing type conversions. Even if the values on both sides of the operator look similar (e.g., '42' === 42), the === operator will only return true if the data types also match.
+	The strict inequality operator returns true if two values are not equal without performing type conversions.
+	You should prefer === and !== for comparisons.
+
+	Loose Equality Operator == and Loose Inequality Operator !=
+	The loose equality operator returns true if two values are equal:
+
+	42 == 42;
+	// => true
+	However, it will also return true if it can perform a type conversion (e.g., changing the string '42' into the number 42) that makes the two values equal.
+
+JavaScript includes four relational operators:
+
+	greater than (>)
+	greater than or equals (>=)
+	less than (<)
+	less than or equals (<=)
+	The behavior of these operators is consistent with the meaning of the corresponding symbols in mathematics.
+
+JavaScript has three logical operators, NOT (!), AND (&&), and OR (||)
+	Since the NOT(!) operator returns truthiness, two !! can be used to evaluate the truthiness of any value or expression even if that expression did not intrinsically have truthiness before.
+	!!4<9
+	true
+	!!4>9
+	false
+	!!!!!!!!!!!!!!!4>9
+	false
+	!!!!!!!!!!!!!!!4<9
+	true
+	
+	AND (&&) and OR (||) operate on the same (both true = true, one true = true) logic as they do in every other logical framework.Assuming that there are !&& and XOR expressions available too for the discerning logician.
+
+The Ternary Expression
+	True or false value ? Return Value if True : Return Value if False
+
+	This is a conditional expression which contains an expression to be evaluated and two presupplied values IF the expression is true OR IF the expression is false. 
+
+programming as a conversation part 2
+
+Definitions:
+	Statement: 
+		an instruction for an action
+	Selection statement: 
+		a statement that instructs the interpreter to use a specific execution order, deviating from the default execution order
+		conditionals are examples of selection statements - if/elif/else ; conditional expressions (ternary/boolean) can be used to construct conditional statements
+	Repetition statement: 
+		a statement that instructs the interpreter to repeat a portion of the execution order, usually until a condition is met
+		while/dowhile/for - the looping conditionals are repetition statements
+	Comment marker:
+		instructs the interpreter to ignore/skip the commented text, deviating from the default execution order 
+
+Key Concepts:
+	Statement vs Expression
+		Expressions always have a return value. Statements do not always have a return value. The variable declaration statement does not have a return value.
+
+	Default Execution Order
+		"JavaScript by default will read our code according to the rules of a default sequence or default flow: "every line, top to bottom, left to right as ruled by order of operations." "
+
+	Control flow
+		conditional statements are also sometimes as an abstract collective referred to as 'control flow' because they control the flow of logic.
+
+	Else/If statements
+		- best to use over a ternary experession if readability is an important feature
+		- best to use over a ternary/boolean expression if the conditional test is not *truthy* ie an equivalence must be tested before making a decision about what to do in the event or not of equivalence ( comparing something other than a yes/no or numeric value)
+		- decide if readability is more important than efficiency when nesting else/if statements
+			- a long block of if... else if will always work but nested elseifs will not always run
+
+	Switch Statement
+		- useful over a long else/if block if the condition being tested is always the same but there are many potentially desirable outcomes that need to be controlled
+		- appears to be that multiple cases can be assigned the same outcome (the statement has a many:many relationship between inputs and outcomes, but each input will individually be assigned one outcome)
+		- default keyword: what will happen if the input does not meet any of the defined cases
+		- break keyword : used to exit the switch statement once a case is matched
+	
+	consle.log()
+			method used to log output to a console (not a file operation)
+	
+	while statement
+		- will execute its contents while the condition is true
+		- will check for condtion at the beginning of each loop (if the condition is never true, the loop may never be executed)
+		
+	doWhile statement
+		- will execute its contents while the condition is true
+		- will check for its condition at the end of each loop (if the condition is never true, the loop may run once)
+
+	Incrementing operators
+		- frequently used to count loops and as part of a condition to exit a loop
+		
+		he for loop is made up of four statements in the following structure:
+
+	for ([initialization]; [condition]; [iteration]) {[loop body]}
+	Initialization
+		Typically used to initialize a counter variable.
+	Condition
+		An expression evaluated before each pass through the loop. If this expression evaluates to true, the statements in the loop body are executed. If the expression evaluates to false, the loop exits.
+	Iteration
+		An expression executed at the end of each iteration. Typically, this will involve incrementing or decrementing a counter, bringing the loop ever closer to completion.
+	Loop body
+		Code that runs on each pass through the loop.
+	Usage: Use a for loop when you know how many times you want the loop to run (for example, when you're looping through elements in an array).
+
+programming as a conversation part 3
+
+Definitions:
+	Abstraction:
+		process of bundling atomic (smallest unit) actions into an organized collection. The result of abstraction is variously called a function, method, procedure, or subroutine.
+	Argument:
+		Information passed into a function at call time
+		A parameter's value
+	Parameter:
+		Argument definition in a function declaration statement
+		An argument's variable name within a function
+	Scope:
+		the amount of access that any given piece of logic has to or from any other piece of logic running concurrently
+Key Concepts:
+
+	Test-driven development
+		the strategy/methodology of development wherein tests are first written to evaluate the conditions that the program must meet, then the functionality to make the tests pass is written. "TDD is considered the most reliable methodology for deliverying quality code."
+	
+	testing in javascript
+		
+		describe()
+			method that appears to inspect other methods
+		it()
+			method declaration that appears to take a common-language description and match it with its method conditional
+		expect()
+			method conditional that appears to inspect other method variable values and method return values and return a boolean value depending on the value match to the condition
+
+Introduction to working with Data Structures
+
+Definitions:
+	Data structure:
+		A data structure is a means for associating and organizing information. 
+	Array:
+		Collection of data sharing a single name. functionally, an ordered list, collection of related values
+	Array element:
+		a value in an array
+	
+	Array index:
+		the position a value has in an array
+	
+	Object:
+		Conceptually known also as lookup tables or dictionaries
+		2-dimensional arrays, which allow for non-numeric indexing
+	
+	Object key:
+		a non-numeric value identifier
+	
+	Object Value:
+		data in a collection, ordered and accessed non-numerically
+
+Key Concepts:
+
+	Collection vs Scalar data types
+	Strings + numbers can be put on a scale. a collection type holds multiple pieces of data and allows the collection to be treated as an abstraction of the collected data.
+	
+	This is an important thing to know about how const works with Arrays. We are not able to reassign the array itself but we can reassign any of its elements. We can also add or delete elements. JavaScript Objects work similarly when declared using const (which isn't surprising, given that Arrays are a special type of Object). The only thing const prevents us from doing is assigning a new value to the variable planets using the = operator.
+
+	Some methods update or mutate the object they are called on; these methods are referred to as destructive. Other methods, known as nondestructive methods, leave the object intact. For example, the String method toUpperCase() is nondestructive.
+	
+Arrays
+
+Key Concepts:
+	Arrays are ordered, meaning that the elements in them will always appear in the same order.
+	The members or elements in an Array can be data of any type in JavaScript. In some other languages Arrays cannot include elements of multiple types. In C, C++, Java, Swift, and others you cannot mix types. JavaScript, Python, Ruby, Lisp, and others permit this.
+	
+	In general, it is best to keep your Arrays to no more than two levels deep. 
+
+	.push() (add to end) and .unshift() (add to beginning)
+		These two methods work in the same way:
+		They take one or more arguments (the element or elements you want to add)
+		They return the length of the modified array
+		They are destructive methods
+		
+	As complements for .push() and .unshift(), respectively, we have .pop() and .shift().
+		.pop() and .shift()
+		As with .push() and .unshift(), these two methods work in the same way:
+		they don't take any arguments
+		they remove a single element
+		they return the element that is removed
+		they are destructive methods
+	
+	.slice()
+		To remove elements from an Array nondestructively (without mutating the original Array), we can use the .slice() method. Just as the name implies, .slice() returns a portion, or slice, of an Array. The method takes 0, 1, or 2 arguments and returns a new array containing the sliced elements.
+		There's a nondestructive way to replace or add items at arbitrary points within an Array; to do it we need to combine the slice() method and the spread operator.
+		
+	.splice()
+		Unlike .slice(), which is nondestructive, .splice() performs destructive actions. Depending on how many arguments we give it, .splice() allows us to remove elements, add elements, or replace elements (or any combination of the three). 
+		After the first two, every additional argument passed to .splice() will be inserted into the Array at the position indicated by the first argument. 
+		We aren't required to remove anything with .splice() — we can use it to insert any number of elements anywhere within an Array by passing 0 as the second argument.
+
+	Spread Operator
+		The spread operator, which looks like an ellipsis: ..., allows us to "spread out" the elements of an existing Array into a new Array, creating a copy. 
+		You might wonder why we would do this rather than just copyOfCoolCities = coolCities. The answer is that coolCities points to a location in memory and when you use the assignment operator to create a copy, you create a second variable that points to the same location. What this means is that, if you change copyOfCoolCities, coolCities is changed as well (and vice versa).
+
+	A note about copying arrays in JavaScript Some methods of copying create deep copies and some create shallow copies. Using the spread operator or .slice() to copy an array creates a shallow copy. What this means is that, if you use it to copy a nested array, the inner array (or arrays) still points to the same location in memory as in the original array. So if you modify the inner array in the copy, it changes the inner array in the original array as well (and vice versa). 
+
+Objects
+
+Definitions:
+	Properties:
+	 key-value pairs
+
+Key Concepts:
+	
+	Object literal syntax: literally typing out the Object inside the {}
+	
+	Dot Notation vs Bracket notation
+		With dot notation, we use the member access operator (a single period) to access values in an Object.  Most people just call it dot notation or the dot operator, so don't worry too much about remembering the term member access operator.
+		Essentially, dot notation is for when you know the exact name of the property in advance, and bracket notation is for when you need to compute it when the program runs.
+
+		From the lesson on Arrays, remember why we call it the computed member access operator: we can place any expression inside the brackets and JavaScript will compute its value to figure out which property to access. 
+
+		The need for bracket notation doesn't stop at dynamically accessing properties on an already-created Object. We can also use bracket notation to dynamically set properties during the creation of a new Object. 
+		
+		If you follow these rules when naming your keys, everything will work out:
+			camelCaseEverything
+			Start the key with a lowercase letter
+			No spaces or punctuation
+		If you follow those three rules, you'll be able to access all of an Object's properties via bracket notation or dot notation.
+
+	JavaScript Object Methods
+		
+		object.keys()
+			returns a list of top-level keys as an array
+		
+	Arrays vs Objects
+		For accessing elements in an Array, always use integers.
+		Be wary of setting Object-style properties on an Array. There's rarely any reason to, and it's usually more trouble than it's worth.
+		Remember that all Object keys, including Array indexes, are strings. This will really come into play when we learn how to iterate over Objects, so keep it in the back of your mind.
+		
+Debugging in Node
+
+	Key Concepts:
+	Conclusion
+		the process is as follows:
+
+		Place one or more breakpoints in your code using the debugger keyword
+		Run node inspect <filename> in the terminal to launch the debugger
+		Run cont at the debug prompt to start execution of the code and advance to the first breakpoint
+		Run repl at the debug prompt to enter the debugger's REPL
+		Check the value of any variables by entering the variable name at the > prompt
+		Exit the REPL using ctrl-c
+		Continue stepping through the code using cont
+		Run .exit or type ctrl-c twice to exit the debugger
+		
+
+Object Iteration
+
+	Key Concepts
+	
+	Looping over an array using `for` requires complex syntax for common tasks
+	`for..of` statements allow object methods to iterate over object elements
+		
+		Usage
+			Use a for...of statement anytime you want to iterate over an array.
+
+	Iterating over objects
+		The for...in statement is similar to for...of; it's generally used for iterating over the properties in an object. 
+		The for...in statement iterates over the properties in an object, but it doesn't pass the entire property into the block. Instead, it only passes in the keys.
+
+	for...in was added before for...of, but for...of is specifically made for arrays. use for...of and change old code you encounter to meet the standard.
+
+	keep in mind that functions can call themselves when recursive action is needed, you do not need to wrap a function in a calling function for that behavior in javascript
+
+CSS
+	Good selector reference:
+		https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048
+		http://css-tricks.com/pseudo-class-selectors/
+
+Introduction to the DOM
+
+Definitions:
+	
+	DOM - Document Object Model
+	`window`
+		an object that represents the browser/container processe's state and interactions with the operating system
+	`document`
+		an object that represents the active web page
+
+Key Concepts:
+
+	DOM is acccessed via two variables: `window` and `document`
+
+JavaScript Events
+
+Definitions:
+	Event handling- events are something that the user does. doing something in response to an event is event handling.
+
+Key Concepts
+	
+	Events must be defined before they can be handled. 
+	There are many types of events. HID input generates events, there are also form behaviors that can generate events and other browser tools that can generate events.
+
+~
